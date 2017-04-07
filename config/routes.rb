@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "/jquery-3" => "pages#jquery_3"
   get "/jquery-4" => "pages#jquery_4"
   get "/jquery-5" => "pages#jquery_5"
-  get "/jquery-6" => "pages#jquery_6"
+  get "/jquery-6" => "pages#j"
 
   root "pages#jquery_1"
 end
