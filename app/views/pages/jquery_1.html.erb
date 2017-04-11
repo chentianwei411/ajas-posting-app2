@@ -1,3 +1,16 @@
+<script>
+$(document).ready(function(){
+  $("#my-click").click(function(){
+    $("#foo").html('<h1>html</h1>');
+    $("#foo").text('<h1>text</h1>');
+    $("#foo").prepend('<h1>prepend</h1>');
+    $("#foo").append('<h1>append</h1>');
+    $("#foo").before('<h2>before</h2>');
+    $("#foo").after('<h2>after</h2>')
+  });
+});
+</script>
+
 <p>
   <a id="my-click">Click Me</a>
 </P>
@@ -5,10 +18,3 @@
 <div id="foo" style="border: 1px solid red;">
   <P>bar</p>
 </div>
-
-<script>
-  $("#my-click").click(function(){
-    $("#foo").html('<h1>zoo</h1>');
-
-  });
-</script>
