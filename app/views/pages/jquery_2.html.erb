@@ -1,0 +1,29 @@
+<script>
+  $(document).ready(function(){
+    $("#foo").hide();
+    $("#my-open-click").click(function(){
+      $("#foo").show();
+    })
+    $("#my-hide-click").click(function(){
+      $("#foo").hide();
+    })
+    $("#my-toggle").click(function(){
+      $("#foo").fadeToggle(1000);
+    })
+    $("#my-toggle-slide").click(function(){
+      $("#foo").slideToggle();
+    })
+  })
+</script>
+
+
+<p>
+  <a id="my-open-click">Open</a>
+  <a id="my-toggle">fade开关</a>
+  <a id="my-toggle-slide">Slide开关</a>
+</p>
+
+<div id="foo" style="border: 1px solid red;">
+  <a id="my-hide-click">Hide</a>
+  <p>bar</p>
+</div>

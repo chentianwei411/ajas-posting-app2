@@ -1,0 +1,36 @@
+<script>
+$(document).ready(function(){
+  $("#my-add-class-click").click(function(){
+    $("#foo").removeClass('error');
+    $("#foo").addClass('success');
+  })
+
+  $("#my-remove-class-click").click(function(){
+    $("#foo").removeClass('success');
+    $("#foo").addClass('error');
+  })
+
+  $("#my-css").click(function(){
+    $("#foo").css('background-color', 'blue');
+  })
+})
+</script>
+
+<style>
+  .error {
+    color: red;
+  }
+  .success {
+    color: green;
+  }
+</style>
+
+<p>
+  <a id="my-add-class-click">Add Class</a>
+  <a id="my-remove-class-click">Remove Class</a>
+  <a id="my-css">CSS</a>
+</p>
+
+<div id="foo" style="border:1px solid red">
+  <h1>bar</h1>
+</div>

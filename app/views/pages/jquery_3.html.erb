@@ -1,0 +1,18 @@
+<P>
+  <a id="my-toggle-click">Toggle</a>
+</p>
+
+<div id="foo" style="border: 1px solid red;">
+  <p>bar</p>
+</div>
+
+<script>
+  $("#foo").hide();
+
+  $("#my-toggle-click").hover(function(){
+
+    $("#foo").toggle(500);
+    // $("#foo").slideToggle(1500);
+    // $("#foo").fadeToggle(1500);
+  })
+</script>
