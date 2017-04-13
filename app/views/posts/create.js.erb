@@ -1,0 +1,15 @@
+// $("#post-list").prepend("<%=j render :partial => "post", :locals => {:post => @post } %>");
+// // j 让溢出的字符变为javascript认可的字符。
+// $("#post_content").val("");
+// # <% if @post.valid? %>
+// #   $("#post-list").prepend("<%= j render :partial => 'post', :locals => {:post => @post} %>");
+// #   $("#post_content").val("");
+// # <% else %>
+// #   alert("no,fail");
+// # <% end %>
+ <% if @post.valid? %>
+  $("#post-list").prepend("<%=j render :partial => "post", :locals => { :post => @post } %>");
+  $("#post_content").val("");
+ <% else %>
+   alert("贴文失败");
+ <% end %>

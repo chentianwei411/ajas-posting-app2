@@ -1,0 +1,17 @@
+<% if post.liked_users.any? %>
+  <%= post.liked_users.map{|u| u.display_name}.join(",") %> 点了赞
+  <!-- map{}和join都是关于ruby的array的method -->
+  <!-- map { |item| block } → new_ary;join()给array的每个数据插入字符 -->
+  <!-- 这句代码的意思：在浏览器上显示所以点赞的人的名称 -->
+  <!-- display_name 是自定义的post的method。 -->
+<% end %>
+
+<% if current_user #已经登陆了 %>
+  <% if post.find_like(current_user)%>
+    <%= link_to "-1", unlike_post_path(post),:method => :post,
+        :remote => true, :class => "btn btn-primary"%>
+  <% else %>
+    <%= link_to "+1", like_post_path(post),:method => :post,
+        :remote => true, :class => "btn btn-primary"%>
+  <% end %>
+<% end %>
