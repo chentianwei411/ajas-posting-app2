@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <h2 class="text-center">我发表过的文章</h2>
+  <div>
+    <%= link_to("返回主页", posts_path, class:"btn btn-primary btn-sm")%>
+  </div>
+
+  <div id="post-list">
+    <% @posts.each do |post| %>
+
+      <div id="post-<%= post.id %>" class="panel panel-default">
+        <div class="panel-heading">
+          <%= post.user.display_name%>
+          <span id="post-collection-<%= post.id %>" class="pull-right btn btn-primary btn-xs">
+             ❤
+          </span>
+        </div>
+        <div class="panel-body">
+
+          <%= post.content%>
+
+          <div class="text-right" >
+            <span id="post-thumbsup-<%= post.id %>" class="label label-success pull-left">
+              <%= post.likes.count %> 👍
+            </span>
+
+            <span id="post-like-<%= post.id %>">
+              <% if post.liked_users.any? %>
+                <%= post.liked_users.map{|u| u.display_name}.join(",") %> 点了赞
+                <!-- map{}和join都是关于ruby的array的method -->
+                <!-- map { |item| block } → new_ary;join()给array的每个数据插入字符 -->
+                <!-- 这句代码的意思：在浏览器上显示所以点赞的人的名称 -->
+                <!-- display_name 是自定义的post的method。 -->
+              <% end %>
+
+              <% if current_user #已经登陆了 %>
+                <% if post.find_like(current_user)%>
+                  <%= link_to "-1", unlike_post_path(post),:method => :post,
+                      :remote => true, :class => "btn btn-primary"%>
+                <% else %>
+                  <%= link_to "+1", like_post_path(post),:method => :post,
+                      :remote => true, :class => "btn btn-primary"%>
+                <% end %>
+              <% end %>
+
+            </span>
+
+            <% if current_user && post.user == current_user%>
+                <%= link_to("delete", post_path(post),:method => :delete,
+                            :remote => true, :class => "btn btn-danger btn-sm")%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

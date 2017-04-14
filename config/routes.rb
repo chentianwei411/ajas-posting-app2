@@ -7,6 +7,11 @@ Rails.application.routes.draw do
       post "unlike" => "posts#unlike"
     end
   end
+  # resources :collections
+
+  namespace :account do
+    resources :posts
+  end
 # verb, Url Pattern,  Controller#Action
   get "/jquery-1" => "pages#jquery_1"
   get "/jquery-2" => "pages#jquery_2"
