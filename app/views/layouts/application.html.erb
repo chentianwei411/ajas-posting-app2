@@ -34,8 +34,9 @@
           <%= link_to('登入', new_session_path(:user))%>
         <% end %>
 
-        <span><%= link_to("我的收藏")%></span>
-        <span><%= link_to("我的文章", account_posts_path)%></span>
+        <span><%= link_to("我点赞的文章",my_likes_posts_path)%>|</span>
+        <span><%= link_to("我发表的文章", account_posts_path)%>|</span>
+        <span><%= link_to("我收藏的文章", my_collections_posts_path)%></span>
       </div>
       <%= yield %>
     </div>

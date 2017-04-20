@@ -1,0 +1,7 @@
+<% if current_user #已经登陆了 %>
+  <% if post.find_collect(current_user)%>
+      <%= link_to "已收藏", uncollect_post_path(post), :remote => true, method: :post, class:"pull-right btn btn-primary btn-xs"%>
+  <% else %>
+      <%= link_to "未收藏", collect_post_path(post), :remote => true, method: :post, class:"pull-right btn btn-primary btn-xs"%>
+  <% end %>
+<% end %>

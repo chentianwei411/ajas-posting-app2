@@ -12,3 +12,38 @@
     <%= render :partial => "post", :locals => {:post => post }%>
   <% end %>
 </div>
+
+<script>
+  $("#post-list").on('click', ".delete-post", function(evt){
+    evt.preventDefault();
+    var url = $(this).attr("href");
+    $.ajax({
+      url: url,
+      method: 'DELETE',
+      dataType:"json",
+      success: function(data){
+        $("#post-"+data["id"]).remove();
+      }
+    })
+  })
+
+  //贴文无限下拉-------------------------------------------------
+  var current_post_id = <%= @posts.last.id%>
+  //当屏幕下拉的时候，触发下面的事件
+  $(window).scroll(function(){
+    // 当下拉到最后一个贴文的时候,判断语法。
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      var url = "/posts?max_id=" + current_post_id
+      if (url) {
+        $.ajax({
+          method: "GET",
+          url: url,
+          dataType: "script"
+        })
+      } else {
+        console.log("data ended")
+      }
+    }
+  })
+
+</script>
