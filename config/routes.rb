@@ -5,7 +5,19 @@ Rails.application.routes.draw do
     member do
       post "like" => "posts#like"
       post "unlike" => "posts#unlike"
+
+      post "collect" => "posts#collect"
+      post "uncollect" => "posts#uncollect"
     end
+    collection do
+      get "my_likes" => "posts#my_likes"
+      get "my_collections" => "posts#my_collections"
+    end
+  end
+  # resources :collections
+
+  namespace :account do
+    resources :posts
   end
 # verb, Url Pattern,  Controller#Action
   get "/jquery-1" => "pages#jquery_1"
